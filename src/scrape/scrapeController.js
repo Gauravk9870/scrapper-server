@@ -1,5 +1,4 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
+
 import puppeteer from 'puppeteer';
 import { v2 as cloudinary } from 'cloudinary';
 import { Readable } from 'stream';
