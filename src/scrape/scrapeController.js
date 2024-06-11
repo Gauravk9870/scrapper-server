@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 import { v2 as cloudinary } from 'cloudinary';
 import { Readable } from 'stream';
 import { config } from '../utils/config.js';
-import ScrapeModel from './ScrapeModel.js';
+import ScrapeModel from './scrapeModel.js';
 
 
 
