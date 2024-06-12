@@ -35,12 +35,20 @@ const uploadToCloudinary = (buffer) => {
 
 export const scrapeWebsite = async (req, res, next) => {
     const { url } = req.body;
-    try {
 
-        const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/google-chrome',
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        });
+    const browser = await puppeteer.launch({
+        args: [
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote",
+        ],
+        executablePath:
+            process.env.NODE_ENV === "production"
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+    });
+    try {
         const page = await browser.newPage();
 
         // Go to the specified URL
