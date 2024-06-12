@@ -37,7 +37,10 @@ export const scrapeWebsite = async (req, res, next) => {
     const { url } = req.body;
     try {
 
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome',
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
         const page = await browser.newPage();
 
         // Go to the specified URL
